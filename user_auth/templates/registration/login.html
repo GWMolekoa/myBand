@@ -1,0 +1,43 @@
+{% extends 'myband/base.html' %}
+{% block title %}
+    Login
+{% endblock %}
+<!DOCTYPE html>
+<html>
+    <body>
+
+        {% block content %}
+        
+
+        
+        <h2>Login To Listen With <span class="text-success">Pvle_'TheEngineer'</span></h2>
+
+        {% load form_tags %}
+
+        <form method="post">
+            {% csrf_token %}
+            <div class="mb-3">
+                <label for="{{ form.username.id_for_label }}" class="form-label">Username</label>
+                {{ form.username|add_class:"form-control" }}
+                {% if form.username.errors %}
+                    <div class="text-danger">
+                        {{ form.username.errors }}
+                    </div>
+                {% endif %}
+            </div>
+            <div class="mb-3">
+                <label for="{{ form.password.id_for_label }}" class="form-label">Password</label>
+                {{ form.password|add_class:"form-control" }}
+                {% if form.password.errors %}
+                    <div class="text-danger">
+                        {{ form.password.errors }}
+                    </div>
+                {% endif %}
+            </div>
+            <button class="btn btn-success" type="submit">Login</button>
+        </form>   
+        
+        {% endblock %}
+
+    </body>
+</html>

@@ -1,0 +1,70 @@
+{% extends 'myband/base.html' %}
+
+{% load static %}
+{% block content %}
+<body>
+    <h2>Welcome to <span class="text-success">Pvle's Top 3 Bands of The Week</span></h2>
+
+    <div class="row row-cols-1 row-cols-md-3 g-3">
+        <!-- Card 1 -->
+        <div class="col">
+          <div class="card h-100 shadow p-4 bg-body-tertiary">
+            <img src="{% static 'myband/the_beatles.jpg' %}" class="card-img-top" alt="the_beatles">
+            <div class="card-body">
+              <h5 class="card-title">{{ beatles.name }}</h5>
+              <p class="card-text">{{ beatles.body|slice:":55" }}....</p>
+
+              {% if user.is_authenticated %}
+                <iframe style="border-radius:12px" src="https://open.spotify.com/embed/artist/3WrFJ7ztbogyGnTHbHJFl2?utm_source=generator" width="100%" height="352" frameborder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+              {% else %}
+                <iframe style="border-radius:12px" src="https://open.spotify.com/embed/artist/3WrFJ7ztbogyGnTHbHJFl2?utm_source=generator" width="100%" height="352" frameborder="0" allowfullscreen="" allow="clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+              {% endif %}
+
+            </div> 
+          </div>
+        </div>
+        <!-- Card 2 -->
+        <div class="col">
+          <div class="card h-100 shadow p-4 bg-body-tertiary">
+            <img src="{% static 'myband/wutang_clan.jpg' %}" class="card-img-top" alt="wutang_clan">
+            <div class="card-body">
+              <h5 class="card-title">{{ wutang_clan.name }}</h5>
+              <p class="card-text">{{ wutang_clan.body|slice:":55" }}....</p>
+
+              {% if user.is_authenticated %}
+                <iframe style="border-radius:12px" src="https://open.spotify.com/embed/artist/34EP7KEpOjXcM2TCat1ISk?utm_source=generator" width="100%" height="352" frameborder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+              {% else %}
+                <iframe style="border-radius:12px" src="https://open.spotify.com/embed/artist/34EP7KEpOjXcM2TCat1ISk?utm_source=generator" width="100%" height="352" frameborder="0" allowfullscreen="" allow="clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+              {% endif %}
+
+            </div>
+          </div>
+        </div>
+        <!-- Card 3 -->
+        <div class="col">
+          <div class="card h-100 shadow p-4 bg-body-tertiary">
+            <img src="{% static 'myband/the_temptations.jpg' %}" class="card-img-top" alt="the_temptations">
+            <div class="card-body">
+              <h5 class="card-title">{{ temptations.name }}</h5>
+              <p class="card-text">{{ temptations.body|slice:":54" }}....</p>
+
+              {% if user.is_authenticated %}
+                <iframe style="border-radius:12px" src="https://open.spotify.com/embed/artist/3RwQ26hR2tJtA8F9p2n7jG?utm_source=generator" width="100%" height="352" frameborder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+              {% else %}
+                <iframe style="border-radius:12px" src="https://open.spotify.com/embed/artist/3RwQ26hR2tJtA8F9p2n7jG?utm_source=generator" width="100%" height="352" frameborder="0" allowfullscreen="" allow="clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+              {% endif %}                        
+              
+            </div>                
+          </div>
+        </div>
+    </div>
+    
+    {% if user.is_authenticated %}
+      <br>
+      <a class="btn btn-success" href="{% url 'band_list' %}">Read More Here..</a>
+    {% else %}
+      <p class="lead text-secondary">To learn more about these artists, <a href="{% url 'register' %}">register</a> or <a href="{% url 'login' %}">login</a> to get started</p>
+    {% endif %}
+    
+</body>
+{% endblock %}

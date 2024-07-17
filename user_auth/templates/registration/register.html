@@ -1,0 +1,24 @@
+{% extends 'myband/base.html' %}
+{% block title %}
+    Register
+{% endblock %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Register to Listen With Pvle_'TheEngineer'</title>
+    </head>
+    <body>
+
+        {% block content %}
+        
+        <h2>Register to Listen With Pvle_'TheEngineer'</h2>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button class="btn btn-success" type="submit">Register</button>
+        </form>
+        
+        {% endblock %}
+
+    </body>
+</html>
